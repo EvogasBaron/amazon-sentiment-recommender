@@ -1,0 +1,14 @@
+.idea/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.zip
+*.tar.gz
+
+# Data & cache
+data/
+data/raw/
+data/processed/
+
+# Results
+results/
