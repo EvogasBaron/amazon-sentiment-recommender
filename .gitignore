@@ -1,3 +1,4 @@
+# IDE & temporary
 .idea/
 __pycache__/
 *.pyc
@@ -5,10 +6,13 @@ __pycache__/
 *.zip
 *.tar.gz
 
-# Data & cache
-data/
+# Data raw and caches
 data/raw/
-data/processed/
+data/processed/**/tf_cache*/
+data/processed/**/*_cache.pkl
+data/processed/**/*.csv.gz
+data/processed/**/*.npy
+data/processed/splits/
 
-# Results
-results/
+# Results (keep csv and json, ignore binary ranks if needed)
+# ranks_*.npy are small (~135KB each, 2MB total) and enable fast re-computation without retraining.
