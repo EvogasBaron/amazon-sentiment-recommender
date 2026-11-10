@@ -48,14 +48,25 @@
 | `src/stats.py` | Kiểm định ý nghĩa thống kê bằng Paired Bootstrap Resampling, tính khoảng tin cậy 95% và hiệu chỉnh Bonferroni. |
 | `src/sentiment_transformer.py` | Trích xuất điểm cảm xúc văn bản review theo lô bằng mô hình Pretrained Transformer (`nlptown/bert`), có lưu checkpoint. |
 | `src/compute_p0_results.py` | Tính toán tự động bảng Bad-hit rate, Good-hit rate, wNDCG, kiểm định Bonferroni và phân tích Residual. |
+| `src/qualitative_error_analysis.py` | Phân tích định tính 30 mẫu review bất đồng mạnh giữa BERT và sao (châm biếm, độ khó game, lỗi kỹ thuật). |
+| `src/temporal_diagnostics.py` | Đo lường rò rỉ thời gian chéo (Cross-user leakage) và lý giải độ sụt giảm 17-20% từ Valid sang Test. |
 | `notebooks/prepare_and_eda.ipynb` | Tải dữ liệu Amazon Reviews 2023, lọc k-core, làm sạch tiêu đề tự sinh chống rò rỉ nhãn, chia tập dữ liệu và EDA. |
 | `notebooks/sentiment_scoring.ipynb` | Trích xuất điểm cảm xúc bằng VADER (rule-based baseline) và tổng hợp bảng sentiment hợp nhất. |
 | `notebooks/sentiment_transformer.ipynb` | Báo cáo chẩn đoán phân phối điểm sentiment từ mô hình Transformer và tương quan với số sao. |
 | `notebooks/baselines.ipynb` | Huấn luyện, tinh chỉnh siêu tham số và đánh giá các mô hình nền tảng (Popularity, ItemKNN, EASE). |
 | `notebooks/hybrid_ablation.ipynb` | Thực nghiệm 6 họ biến thể lai ghép sentiment (A-F), so sánh đối chứng với baseline bằng kiểm định thống kê. |
 | `notebooks/analysis.ipynb` | Tổng hợp kết quả, trực quan hóa biểu đồ, phân tầng theo số sao/kỳ vọng và phân tích nguyên nhân gốc rễ. |
-| `tests/test_core.py` | Unit test tự động kiểm tra tính chính xác của hàm split, xếp hạng ties, và paired bootstrap. |
+| `tests/test_core.py` | Unit test kiểm tra split theo thời gian, giải quyết hòa điểm bi quan và paired bootstrap. |
+| `tests/test_models_and_weights.py` | Unit test toàn diện cho các mô hình (ItemKNN, EASE, Popularity, Fallback, Prior) và ma trận trọng số. |
+| `DATA.md` | Tài liệu mô tả nguồn gốc dữ liệu, quy trình k-core và giải trình 28 review trống. |
 | `requirements.txt` | Danh sách các thư viện phụ thuộc môi trường chạy thực tế (Python 3.11, UTF-8). |
+
+---
+
+## Báo cáo chuyên sâu bổ sung
+
+1. **[Báo cáo Phân tích định tính lỗi lệch miền (Qualitative Error Analysis)](results/Video_Games/qualitative_error_analysis.md):** Khảo sát bằng chứng thực tế về các review game 5 sao bị BERT đánh giá 1 sao (do từ ngữ miêu tả độ khó, kinh dị, bạo lực) và review 1 sao bị chấm 5 sao (do châm biếm/mỉa mai).
+2. **[Báo cáo Phân tích Rò rỉ thời gian & Trôi dạt danh mục (Temporal Drift)](results/Video_Games/temporal_leakage_and_drift_report.md):** Phân tích chi tiết mức sụt giảm độ phổ biến của item đích (giảm 19.1%) và 25.33% rò rỉ thời gian chéo giải thích hiện tượng giảm 17-20% từ Valid sang Test.
 
 ---
 
@@ -66,12 +77,14 @@
 pip install -r requirements.txt
 ```
 
-### 2. Chạy kiểm thử tự động (Unit Tests)
+### 2. Chạy toàn bộ kiểm thử tự động (Unit Tests)
 ```bash
-pytest tests/test_core.py -v
+pytest tests/ -v
 ```
 
 ### 3. Tái lập bảng kết quả P0
 ```bash
 python -m src.compute_p0_results
+python -m src.qualitative_error_analysis
+python -m src.temporal_diagnostics
 ```
