@@ -1,0 +1,9 @@
+Lát cắt,n_user,% test,Thuật toán,NDCG Base,NDCG C (Sentiment),dNDCG C vs Base,lo_C,hi_C,C có ý nghĩa (95% CI),dNDCG B (Stars),dNDCG D (Stars+Sent)
+Tail Items (<= 20 reviews trong train),5655,33.49,knn,0.00873,0.00989,0.00117,3e-05,0.00227,True,4e-05,0.00047
+Tail Items (<= 20 reviews trong train),5655,33.49,ease,0.00461,0.0056,0.001,0.00031,0.00179,True,6e-05,0.00066
+Head Items (> 20 reviews trong train),11231,66.51,knn,0.05358,0.05151,-0.00207,-0.00358,-0.00054,True,-0.00132,-0.00139
+Head Items (> 20 reviews trong train),11231,66.51,ease,0.06258,0.06105,-0.00154,-0.00325,-4e-05,True,-0.0004,-0.00044
+User lịch sử ngắn (<= 10 train reviews),9542,56.51,knn,0.04331,0.04228,-0.00103,-0.00256,0.00042,False,-0.00068,-0.00042
+User lịch sử ngắn (<= 10 train reviews),9542,56.51,ease,0.04684,0.04615,-0.00068,-0.00217,0.00087,False,7e-05,0.00056
+User lịch sử dài (> 10 train reviews),7344,43.49,knn,0.03239,0.03146,-0.00093,-0.00235,0.00044,False,-0.00111,-0.00123
+User lịch sử dài (> 10 train reviews),7344,43.49,ease,0.0384,0.0377,-0.0007,-0.00216,0.00076,False,-0.00066,-0.00089

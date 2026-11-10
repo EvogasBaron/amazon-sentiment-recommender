@@ -1,0 +1,5 @@
+Thuật toán,Chỉ số,Cỡ mẫu N,Độ lệch chuẩn sai khác (SD),Sai số chuẩn (SE),"MDE (alpha=0.05, power=80%)",MDE % tương đối so với Baseline,MDE có Bonferroni (m=6),Hiệu ứng quan sát thực tế (dNDCG),Kết luận công suất
+knn,NDCG@10,16886,0.06996,0.000538,0.00151,3.91%,0.00187,-0.00098,Hiệu ứng quan sát (< 0.0004) nhỏ hơn MDE (0.0015); thiết kế không đủ nhạy để phân biệt khác biệt quá nhỏ.
+knn,Bad-hit rate (%),16886,6.43667,0.049533,0.1388,15.02%,0.1724,-0.1540%,Hiệu ứng giảm bad-hit (-0.154%) VƯỢT QUA MDE Bonferroni (0.172%); phát hiện có ý nghĩa thống kê thực sự.
+ease,NDCG@10,16886,0.07262,0.000559,0.00157,3.63%,0.00194,-0.00069,Hiệu ứng quan sát (< 0.0004) nhỏ hơn MDE (0.0015); thiết kế không đủ nhạy để phân biệt khác biệt quá nhỏ.
+ease,Bad-hit rate (%),16886,6.48174,0.04988,0.1397,14.66%,0.1736,-0.1836%,Hiệu ứng giảm bad-hit (-0.184%) VƯỢT QUA MDE Bonferroni (0.174%); phát hiện có ý nghĩa thống kê thực sự.
