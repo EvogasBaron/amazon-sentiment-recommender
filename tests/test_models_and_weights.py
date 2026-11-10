@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import scipy.sparse as sp
 
-from src.models import Popularity, ItemKNN, EASE, PopFallback, ItemPriorRerank, build_matrix, build_weighted
+from src.models import Popularity, ItemKNN, EASE, PopFallback, ItemPriorRerank, AdditivePriorRerank, build_matrix, build_weighted
 
 
 def test_build_matrix_and_weighted():
@@ -132,3 +132,22 @@ def test_item_prior_rerank():
     # z cao hơn thì điểm nhân exp(lam * z) phải cao hơn
     assert scores[0, 0] > scores[0, 1] > scores[0, 2]
     assert np.isclose(scores[0, 1], 1.0)  # exp(0) = 1
+
+
+def test_additive_prior_rerank():
+    class DummyModel:
+        def score(self, users, H):
+            # Điểm có thể âm (như EASE)
+            return np.array([[-0.5, 0.0, 0.5]], dtype=np.float32)
+
+    prior_z = np.array([2.0, -1.0, 0.0], dtype=np.float32)
+    rerank = AdditivePriorRerank(DummyModel(), prior_z, lam=0.1)
+
+    scores = rerank.score([0], None)
+    # score[0, 0] = -0.5 + 0.1 * 2.0 = -0.3
+    # score[0, 1] = 0.0 + 0.1 * (-1.0) = -0.1
+    # score[0, 2] = 0.5 + 0.1 * 0.0 = 0.5
+    assert np.isclose(scores[0, 0], -0.3)
+    assert np.isclose(scores[0, 1], -0.1)
+    assert np.isclose(scores[0, 2], 0.5)
+

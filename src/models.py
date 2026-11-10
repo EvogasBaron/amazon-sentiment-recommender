@@ -122,3 +122,17 @@ class ItemPriorRerank:
 
     def score(self, users, H):
         return self.base.score(users, H) * self.w[None, :]
+
+
+class AdditivePriorRerank:
+    """Cộng điểm chất lượng item vào điểm gợi ý: score + lam * z_item.
+    Đặc biệt phù hợp cho EASE khi điểm số mô hình có thể nhận giá trị âm.
+    """
+
+    def __init__(self, base, prior_z, lam):
+        self.base = base
+        self.boost = (np.asarray(prior_z, dtype=np.float32) * float(lam)).astype(np.float32)
+
+    def score(self, users, H):
+        return self.base.score(users, H) + self.boost[None, :]
+
