@@ -1,0 +1,9 @@
+Chỉ số so sánh,Valid,Test,Chênh lệch / Đánh giá
+Số lượng user đánh giá (n_eval),16886,16886,"Giống hệt nhau (16,886)"
+Thời gian trung vị (Timestamp),2017-06-13,2018-07-03,+13 tháng (386 ngày)
+Khoảng cách thời gian trung vị per-user (ngày),-,88.5 ngày,Khoảng cách tương tác cuối
+Sao trung bình (Rating),4.284,4.223,-0.06 sao (giải thích 4-5% mức giảm)
+Tỷ lệ review tiêu cực (<= 3 sao),19.38%,21.21%,+1.8% review chê ở test
+Độ phổ biến trung vị của item đích trong Train,47.0,38.0,-19.1% tương tác láng giềng
+Độ phổ biến trung bình của item đích trong Train,99.1,90.6,-8.6% tương tác láng giềng
+Tỷ lệ dữ liệu Train xảy ra SAU mốc test của user,-,25.33% (trung vị 15.60%),Cross-user Temporal Leakage
