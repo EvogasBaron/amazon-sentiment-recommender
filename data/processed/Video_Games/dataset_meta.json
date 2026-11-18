@@ -1,0 +1,20 @@
+{
+  "category": "Video_Games",
+  "source_url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Video_Games.jsonl.gz",
+  "raw_file": "Video_Games.jsonl.gz",
+  "timestamp_field": "timestamp",
+  "timestamp_unit": "ms",
+  "core_start": 5,
+  "core_chosen": 9,
+  "max_reviews": 300000,
+  "split": "leave-one-out theo timestamp, phá hòa theo parent_asin",
+  "auto_title_cleaned": true,
+  "n_user": 16886,
+  "n_item": 7064,
+  "n_review": 257475,
+  "n_train": 223703,
+  "n_valid": 16886,
+  "n_test": 16886,
+  "tie_rate_last2": 0.00011844131232974062,
+  "generated_at": "2026-10-18T23:22:04"
+}
