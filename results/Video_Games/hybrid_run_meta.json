@@ -1,0 +1,22 @@
+{
+  "category": "Video_Games",
+  "sent_col": "tf01",
+  "algos": [
+    "knn",
+    "ease"
+  ],
+  "eps": 0.05,
+  "pop_eps": 0.0001,
+  "best_params": {
+    "knn": {
+      "k": 2000,
+      "shrink": 10.0
+    },
+    "ease": {
+      "lam": 100.0
+    }
+  },
+  "n_configs": 48,
+  "n_test_users": 16886,
+  "generated_at": "2026-10-18T23:53:46"
+}
